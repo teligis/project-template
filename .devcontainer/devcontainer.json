@@ -3,12 +3,14 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && if [ ! -f .env ]; then cp .env.example .env && echo '✅ .env已生成，请填入DeepSeek API Key后重启终端'; fi",
+    "runArgs": ["--env-file", ".env"],
+    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && if [ ! -f .env ]; then cp .env.example .env && echo '请填写 .env 文件中的 API Key，然后运行: source .env'; fi",
     "customizations": {
         "vscode": {
             "extensions": [
                 "anthropic.claude-code"
             ]
         }
-    }
+    },
+    "remoteUser": "root"
 }
