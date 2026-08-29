@@ -1,11 +1,16 @@
 {
     "name": "${containerWorkspaceFolderBasename}",
-    "image": "my-claude-base:latest",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     "runArgs": ["--env-file", ".env"],
     "postCreateCommand": "if [ ! -f .env ]; then cp .env.example .env && echo '✅ 已创建 .env 文件，请填入你的 DeepSeek API Key 后重建容器'; fi",
     "customizations": {
         "vscode": {
             "extensions": []
         }
-    }
+    },
+    "workspaceMount": "type=volume,source=${localWorkspaceFolderBasename},target=/workspaces/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "remoteUser": "root"
 }
