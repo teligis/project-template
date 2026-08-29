@@ -1,16 +1,14 @@
 {
-    "name": "${containerWorkspaceFolderBasename}",
+    "name": "claude-code-env",
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "runArgs": ["--env-file", ".env"],
-    "postCreateCommand": "if [ ! -f .env ]; then cp .env.example .env && echo '✅ 已创建 .env 文件，请填入你的 DeepSeek API Key 后重建容器'; fi",
+    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && if [ ! -f .env ]; then cp .env.example .env && echo '✅ .env已生成，请填入DeepSeek API Key后重启终端'; fi",
     "customizations": {
         "vscode": {
-            "extensions": []
+            "extensions": [
+                "anthropic.claude-code"
+            ]
         }
-    },
-    "workspaceMount": "type=volume,source=${localWorkspaceFolderBasename},target=/workspaces/${localWorkspaceFolderBasename}",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "remoteUser": "root"
+    }
 }
