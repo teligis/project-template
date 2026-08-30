@@ -3,7 +3,7 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && if [ ! -f .env.example ]; then echo '.env.example缺失'; fi && if [ ! -f .claude/settings.local.json ]; then mkdir -p .claude; fi",
+    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && if [ ! -f .claude/settings.local.json ]; then mkdir -p .claude; fi",
     "customizations": {
         "vscode": {
             "extensions": [
