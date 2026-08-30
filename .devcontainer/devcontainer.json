@@ -3,8 +3,7 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "runArgs": ["--env-file", ".env"],
-    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && if [ ! -f .env ]; then cp .env.example .env && echo '请填写 .env 文件中的 API Key'; fi && if ! grep -q 'source .env' /home/vscode/.bashrc; then echo 'source .env' >> /home/vscode/.bashrc && echo '✅ 已配置 .env 自动加载'; fi",
+    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && if [ ! -f .env.example ]; then echo '.env.example缺失'; fi && if [ ! -f .claude/settings.local.json ]; then mkdir -p .claude; fi",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -12,5 +11,5 @@
             ]
         }
     },
-    "remoteUser": "root"
+    "remoteUser": "vscode"
 }
