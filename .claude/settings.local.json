@@ -1,0 +1,7 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_AUTH_TOKEN": "sk-请替换成你的密钥",
+    "ANTHROPIC_MODEL": "deepseek-v4-pro"
+  }
+}
